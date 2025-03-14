@@ -1,0 +1,1 @@
+export type SortOrder = 'price-high-to-low' | 'price-low-to-high';

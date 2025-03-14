@@ -2,6 +2,7 @@ import js from '@eslint/js';
 import tseslint from 'typescript-eslint';
 import reactPlugin from 'eslint-plugin-react';
 import globals from 'globals';
+import pluginQuery from '@tanstack/eslint-plugin-query'
 
 export default [
   {
@@ -12,6 +13,7 @@ export default [
   },
   js.configs.recommended,
   ...tseslint.configs.recommended,
+  ...pluginQuery.configs['flat/recommended'],
   {
     files: ['src/**/*.{js,jsx,ts,tsx}'],
     plugins: {

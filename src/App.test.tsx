@@ -5,8 +5,15 @@ jest.mock('@components/layout/AppLayout', () => {
   return () => (
     <div>AppLayout component</div>
   );
-}
-);
+});
+
+jest.mock('@context/hotelListingContext/HotelListingContextProvider', () => {
+  return {
+    HotelListingContextProvider: ({ children }: { children: React.ReactNode }) => {
+      return <div>{children}</div>;
+    },
+  };
+});
 
 describe('App', () => {
   test('should render the AppLayout component', () => {
