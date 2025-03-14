@@ -11,6 +11,15 @@ module.exports = {
   },
   resolve: {
     extensions: ['.tsx', '.ts', '.jsx', '.js'],
+    alias: {
+      '@assets': path.resolve(__dirname, 'src/assets'),
+      '@components': path.resolve(__dirname, 'src/components'),
+      '@constants': path.resolve(__dirname, 'src/constants'),
+      '@context': path.resolve(__dirname, 'src/context'),
+      '@hooks': path.resolve(__dirname, 'src/hooks'),
+      '@custom-types': path.resolve(__dirname, 'src/types'),
+      '@utils': path.resolve(__dirname, 'src/utils')
+    }
   },
   module: {
     rules: [
@@ -52,7 +61,11 @@ module.exports = {
             : 'style-loader',
           'css-loader',
         ],
-      }
+      },
+      {
+        test: /\.(png|jpe?g|gif|svg)$/i,
+        type: 'asset/resource',
+      },
     ],
   },
   plugins: [
