@@ -1,7 +1,10 @@
 import React from "react";
+import ListingToolbar from "@components/widgets/listingToolbar/ListingToolbar";
 
 const HotelListing = () => {
-    return <div>Hotel Listing</div>;
+    return <>
+        <ListingToolbar />
+    </>;
 }
 
 export default HotelListing;

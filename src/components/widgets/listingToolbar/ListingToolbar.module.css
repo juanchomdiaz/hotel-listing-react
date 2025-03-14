@@ -1,0 +1,29 @@
+.toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.sortingSection {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.sortLabel {
+    margin-right: 8px;
+    font-weight: 500;
+}
+
+.selectInput {
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    min-width: 180px;
+}
+
+.resultsInfo {
+    font-weight: 500;
+}

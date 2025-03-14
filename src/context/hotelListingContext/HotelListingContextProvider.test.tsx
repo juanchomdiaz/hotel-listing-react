@@ -5,18 +5,10 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { HotelListingContextProvider } from './HotelListingContextProvider';
 import { useHotelListingContext } from '@hooks/context/useHotelListingContext';
 import { API_URL } from '@constants/environment';
-import * as mockHotels from "../../../development/data/hotels.json";
+import { SORT_ORDER_DEFAULT } from '@constants/listing';
 
 // Mock fetch globally
 global.fetch = jest.fn();
-
-// Helper to set up fetch mock
-const setupFetchMock = (data = mockHotels, ok = true) => {
-    (global.fetch as jest.Mock).mockResolvedValue({
-        ok,
-        json: async () => data,
-    });
-};
 
 // Create a test query client
 const createTestQueryClient = () => new QueryClient({
@@ -39,7 +31,6 @@ const TestConsumer = () => {
     return (
         <div>
             <div data-testid="loading">{context.isLoading.toString()}</div>
-            <div data-testid="hotels-count">{context.hotels.length}</div>
             <div data-testid="sort-order">{context.sortOrder}</div>
             <button data-testid="change-sort" onClick={() => context.setSortOrder('price-low-to-high')}>
                 Change Sort
@@ -65,7 +56,6 @@ const renderWithClient = (ui: React.ReactElement) => {
 describe('HotelListingContextProvider', () => {
     beforeEach(() => {
         jest.clearAllMocks();
-        setupFetchMock();
     });
 
     test('Should fetch hotels with correct initial sort order parameter', async () => {
@@ -78,7 +68,7 @@ describe('HotelListingContextProvider', () => {
         expect(screen.getByTestId('loading').textContent).toBe('true');
 
         await waitFor(() => {
-            expect(global.fetch).toHaveBeenCalledWith(expect.stringContaining('sortOrder=price-high-to-low'));
+            expect(global.fetch).toHaveBeenCalledWith(expect.stringContaining(`sortOrder=${SORT_ORDER_DEFAULT}`));
         });
     });
 
@@ -112,7 +102,7 @@ describe('HotelListingContextProvider', () => {
         (global.fetch as jest.Mock).mockImplementation(() =>
             new Promise(resolve => setTimeout(() => resolve({
                 ok: true,
-                json: async () => mockHotels
+                json: async () => { }
             }), 100))
         );
 

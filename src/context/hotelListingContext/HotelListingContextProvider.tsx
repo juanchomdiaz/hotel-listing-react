@@ -1,9 +1,10 @@
-import React, { createContext, useState, ReactNode, useMemo } from 'react';
+import React, { createContext, useState, ReactNode, useMemo, useEffect } from 'react';
 import { useQuery, UseQueryResult } from '@tanstack/react-query';
-import { Hotel } from '@custom-types/hotel';
+import { Hotel, HotelResponse } from '@custom-types/hotel';
 import { SortOrder } from '@custom-types/sorting';
 import { GC_TIME_TEN_MINUTES, DATA_STALE_TIME_FIVE_MINUTES } from '@constants/listing';
 import { API_URL } from '@constants/environment';
+import { SORT_ORDER_DEFAULT } from '@constants/listing';
 
 export interface HotelListingContextData {
   hotels: Hotel[];
@@ -27,9 +28,9 @@ interface HotelListingProviderProps {
  * be placed here for simplicity.
  * 
  * @param {SortOrder} sortOrder the sort order to fetch hotels
- * @returns {Promise<Hotel[]>}
+ * @returns {Promise<HotelResponse>}
  */
-const fetchHotels = async (sortOrder: SortOrder): Promise<Hotel[]> => {
+const fetchHotels = async (sortOrder: SortOrder): Promise<HotelResponse> => {
   const url = new URL(API_URL);
   url.searchParams.append('sortOrder', sortOrder);
   try {
@@ -64,14 +65,13 @@ const fetchHotels = async (sortOrder: SortOrder): Promise<Hotel[]> => {
  * The data is refreshed when the sort order changes, and has configurable 
  * stale time and garbage collection time.
  * 
- * @param props - The component props
- * @param props.children - Child components that will have access to the context
+ * @param children - Child components that will have access to the context
  * @returns The provider component with the hotel listing context
  */
 export const HotelListingContextProvider = ({ children }: HotelListingProviderProps): React.JSX.Element => {
-  const [sortOrder, setSortOrder] = useState<SortOrder>('price-high-to-low');
+  const [sortOrder, setSortOrder] = useState<SortOrder>(SORT_ORDER_DEFAULT);
 
-  const { data = [], isLoading, error, refetch } = useQuery<Hotel[], Error>({
+  const { data = {} as HotelResponse, isLoading, error, refetch } = useQuery<HotelResponse, Error>({
     queryKey: ['hotels', sortOrder],
     queryFn: () => fetchHotels(sortOrder),
     staleTime: DATA_STALE_TIME_FIVE_MINUTES,
@@ -80,7 +80,7 @@ export const HotelListingContextProvider = ({ children }: HotelListingProviderPr
   });
 
   const contextValue: HotelListingContextData = useMemo(() => ({
-    hotels: data,
+    hotels: data.results,
     isLoading,
     error,
     sortOrder,

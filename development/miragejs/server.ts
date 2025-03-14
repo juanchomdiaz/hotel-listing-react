@@ -7,8 +7,8 @@ export const startMirage = () => createServer({
     routes() {
         this.namespace = "api"
 
-        this.get("/hotels", (schema, request) => {
-            return data
+        this.get("/hotels", () => {
+            return data;
         })
     },
 })
