@@ -1,7 +1,7 @@
 import React from 'react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { HotelListingContextProvider } from '@context/hotelListingContext/HotelListingContextProvider';
-import HotelListing from '@components/widgets/hotelListing/HotelListing';
+import HotelListingView from '@components/views/hotelListingView/HotelListingView';
 import AppLayout from '@components/layout/AppLayout';
 
 // Create a client
@@ -12,7 +12,7 @@ const App = (): JSX.Element => {
     <QueryClientProvider client={queryClient}>
       <HotelListingContextProvider>
         <AppLayout>
-          <HotelListing />
+          <HotelListingView />
         </AppLayout>
       </HotelListingContextProvider>
     </QueryClientProvider>

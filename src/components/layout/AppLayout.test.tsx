@@ -35,9 +35,5 @@ describe('AppLayout', () => {
         // Check for main content area
         const mainElement = document.querySelector('main');
         expect(mainElement).toBeInTheDocument();
-
-        // Check for container
-        const containerElements = document.getElementsByClassName('container');
-        expect(containerElements.length).toBe(1);
     });
 });

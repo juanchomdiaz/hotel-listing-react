@@ -1,4 +1,4 @@
-import React, { createContext, useState, ReactNode, useMemo, useEffect } from 'react';
+import React, { createContext, useState, ReactNode, useMemo } from 'react';
 import { useQuery, UseQueryResult } from '@tanstack/react-query';
 import { Hotel, HotelResponse } from '@custom-types/hotel';
 import { SortOrder } from '@custom-types/sorting';

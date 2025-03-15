@@ -1,6 +1,5 @@
-.appLayout {
+.outterContainer {
     display: flex;
-    flex-direction: column;
     min-height: 100vh;
     align-items: center;
 }
@@ -15,7 +14,7 @@
     max-height: 40px;
 }
 
-.container {
+.innerContainer {
     max-width: 1200px;
     width: 100%;
     margin: 0 auto;
@@ -25,6 +24,7 @@
 .content {
     flex: 1;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     padding: 2rem 0;
 }

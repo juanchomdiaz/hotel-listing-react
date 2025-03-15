@@ -4,8 +4,8 @@ import logo from '@assets/images/qantas-logo.png';
 
 const AppLayout = ({ children }: { children?: React.ReactNode }): JSX.Element => {
     return (
-        <div className={styles.appLayout}>
-            <div className={styles.container}>
+        <div className={styles.outterContainer}>
+            <div className={styles.innerContainer}>
                 <header className={styles.header}>
                     <img src={logo} alt="qantas logo" />
                 </header>
