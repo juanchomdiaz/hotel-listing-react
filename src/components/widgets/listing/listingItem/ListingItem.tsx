@@ -1,6 +1,6 @@
 import React from "react";
 import { Hotel } from "@custom-types/hotel";
-import ListingItemRating from "../listingItemRating/ListingItemRating";
+import ListingItemRating from "@components/widgets/listing/listingItemRating/ListingItemRating";
 import styles from "./ListingItem.module.css";
 import { formatCurrencyValue } from "@utils/currencyUtils";
 
@@ -8,6 +8,12 @@ interface ListingItemProps {
     hotel: Hotel;
 }
 
+/**
+ * A component that renders a single hotel listing item.
+ * 
+ * @param hotel the Hotel object to be rendered
+ * @returns 
+ */
 const ListingItem = ({ hotel }: ListingItemProps): React.JSX.Element => {
     return (
         <article className={styles.listingItem} aria-labelledby={`hotel-name-${hotel.property.propertyId}`}>
