@@ -1,0 +1,39 @@
+.ratingContainer {
+    display: flex;
+}
+
+.star {
+    font-size: 20px;
+}
+
+.circle {
+    font-size: 25px;
+}
+
+.ratingIcon {
+    margin-right: 2px;
+}
+
+.ratingIcon.filled {
+    color: #ffcc00;
+}
+
+.ratingIcon.halfFilled {
+    position: relative;
+    color: #dddddd;
+}
+
+/* Creates half-filled star effect by displaying only the left 
+50% of the icon in yelloww color on top of a grey one */
+.ratingIcon.halfFilled::before {
+    content: attr(data-icon);
+    position: absolute;
+    left: 0;
+    width: 50%;
+    overflow: hidden;
+    color: #ffcc00;
+}
+
+.ratingIcon.unfilled {
+    color: #dddddd;
+}

@@ -1,5 +1,6 @@
 import React from "react";
 import { Hotel } from "@custom-types/hotel";
+import ListingItemRating from "../listingItemRating/ListingItemRating";
 import styles from "./ListingItem.module.css";
 import { formatCurrencyValue } from "@utils/currencyUtils";
 
@@ -29,7 +30,7 @@ const ListingItem = ({ hotel }: ListingItemProps): React.JSX.Element => {
                             <address className={styles.location}>{hotel.property.address.join(', ')}</address>
                         </div>
                         <div className={styles.ratingSection}>
-                            <p>Rating star</p>
+                            <ListingItemRating rating={hotel.property.rating.ratingValue} variant={hotel.property.rating.ratingType === 'self' ? 'circle' : 'star'} />
                         </div>
                     </header>
 
