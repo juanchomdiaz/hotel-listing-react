@@ -1,6 +1,7 @@
 import React from "react";
 import { Hotel } from "@custom-types/hotel";
 import styles from "./ListingItem.module.css";
+import { formatCurrencyValue } from "@utils/currencyUtils";
 
 interface ListingItemProps {
     hotel: Hotel;
@@ -43,8 +44,8 @@ const ListingItem = ({ hotel }: ListingItemProps): React.JSX.Element => {
                 <div className={styles.offerDetails}>
                     <div className={styles.priceContainer} aria-label={`Price: ${hotel.offer.displayPrice.currency} ${hotel.offer.displayPrice.amount} per night`}>
                         <p className={styles.priceLabel}><b>1</b>{` night total (${hotel.offer.displayPrice.currency})`}</p>
-                        <p className={styles.price}>{hotel.offer.displayPrice.amount}</p>
-                        <p className={styles.priceSaving}>{hotel.offer.savings && `Save ${hotel.offer.savings.amount}~`}</p>
+                        <p className={styles.price}>{formatCurrencyValue(hotel.offer.displayPrice.amount, hotel.offer.displayPrice.currency)}</p>
+                        <p className={styles.priceSaving}>{hotel.offer.savings && `Save ${formatCurrencyValue(hotel.offer.savings.amount, hotel.offer.savings.currency)}~`}</p>
                     </div>
                 </div>
             </div>

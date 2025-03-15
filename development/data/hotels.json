@@ -1,6 +1,6 @@
 {
   "results": [
-      {
+    {
       "id": "cxd650nuyo",
       "property": {
         "propertyId": "P107801",
@@ -26,11 +26,11 @@
         },
         "name": "Deluxe Balcony Room",
         "displayPrice": {
-          "amount": 329.000000000,
+          "amount": 329.000000001,
           "currency": "AUD"
         },
         "savings": {
-          "amount": 30.000000000,
+          "amount": 30.000000001,
           "currency": "AUD"
         },
         "cancellationOption": {
