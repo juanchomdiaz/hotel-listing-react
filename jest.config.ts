@@ -15,7 +15,8 @@ const config: Config = {
   },
   setupFilesAfterEnv: [
     '@testing-library/jest-dom'
-  ]
+  ],
+  coverageDirectory: '<rootDir>/dist/coverage',
 };
 
 export default config;
