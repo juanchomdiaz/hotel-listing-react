@@ -61,8 +61,11 @@ For the rating component, I took a minimalist approach that successfully display
 The project follows a feature-based structure to improve maintainability and scalability:
 
 - `/src/components` - UI components
-- `/src/features` - Feature-specific components and logic
-- `/src/services` - API and service integrations
+- `/src/constants` - Files containing constants
+- `/src/context` - Context providers
+- `/src/hooks` - Files containing hooks
+- `/src/styles` - Global styles
+- `/src/types` - Typescript types and interface definitions
 - `/src/utils` - Helper functions and utilities
 
 
